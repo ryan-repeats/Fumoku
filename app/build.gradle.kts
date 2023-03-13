@@ -3,6 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
 
     id("com.mikepenz.aboutlibraries.plugin")
+
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -47,6 +49,13 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit-ktx:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+    // AboutLibraries
     implementation("com.mikepenz:aboutlibraries:10.6.1")
 
+    // Firebase
+    implementation(platform("com.google.firebase:firebase-bom:31.2.3"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.firebase:firebase-storage-ktx")
 }

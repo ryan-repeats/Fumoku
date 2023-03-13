@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "39741598566",
+    "firebase_url": "https://ryyvv-fumoku-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "ryyvv-fumoku",
+    "storage_bucket": "ryyvv-fumoku.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39741598566:android:649897e3dc4fe082c4f6a7",
+        "android_client_info": {
+          "package_name": "live.ryyvv.fumoku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "39741598566-gac65ltpqjbn39jhjgk2cjsmp573fe28.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9rkxH4lRHqiVOiWJ1HhWScRy1C-OREy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "39741598566-b6d749fgepd3o6lvhe99t2mbnouc7m6m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
