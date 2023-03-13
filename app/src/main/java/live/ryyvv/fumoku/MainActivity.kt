@@ -1,10 +1,10 @@
 package live.ryyvv.fumoku
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.bottomappbar.BottomAppBar
+import com.mikepenz.aboutlibraries.LibsBuilder
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,12 +18,11 @@ class MainActivity : AppCompatActivity() {
         bottomAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.about -> {
-                    startActivity(
-                        Intent(
-                            this,
-                            AboutActivity::class.java
-                        )
-                    )
+                    LibsBuilder()
+                        .withAboutAppName(resources.getString(R.string.app_name))
+                        .withAboutIconShown(true)
+                        .withAboutVersionShown(true)
+                        .start(this)
                     true
                 }
 

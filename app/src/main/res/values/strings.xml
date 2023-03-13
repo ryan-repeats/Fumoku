@@ -11,4 +11,5 @@
     <string name="action_2">Action 2</string>
     <string name="content_description_media">Media</string>
     <string name="page_about">About</string>
+    <string name="aboutLibraries_description_text">Fumoku is a free and open source software for Android to keep track of your personal dolls.</string>
 </resources>
