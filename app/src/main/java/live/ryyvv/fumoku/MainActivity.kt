@@ -21,14 +21,15 @@ import com.mikepenz.aboutlibraries.LibsBuilder
 import live.ryyvv.fumoku.utils.TAG
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var auth: FirebaseAuth
-
     private lateinit var googleSignInClient: GoogleSignInClient
+
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //region Process AppBar
         val topAppBar = findViewById<Toolbar>(R.id.topAppBar)
         setSupportActionBar(topAppBar)
 
@@ -47,11 +48,14 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+        //endregion
 
+        //region Assign googleSignInClient
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
+        //endregion
 
         auth = Firebase.auth
     }
@@ -62,6 +66,10 @@ class MainActivity : AppCompatActivity() {
         updateUI(auth.currentUser)
     }
 
+    //region Auth functions
+    /**
+     * For launching [GoogleSignInClient.getSignInIntent].
+     */
     private val signInLauncher = registerForActivityResult(StartActivityForResult()) {
         with(it) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
@@ -77,6 +85,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * For processing [signInLauncher] data.
+     */
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential).addOnCompleteListener(this) { task ->
@@ -92,6 +103,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+    //endregion
 
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
