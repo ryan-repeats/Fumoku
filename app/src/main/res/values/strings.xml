@@ -5,6 +5,12 @@
     <!-- User Interfaces -->
     <string name="add">Add</string>
     <string name="about">About</string>
+    <string name="fumo_bad">ᗜ˰ᗜ</string>
+    <string name="fumo_good">ᗜˬᗜ</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="signed_in">You\'re signed in!</string>
+    <string name="not_signed_in">You\'re not signed in!</string>
 
     <!-- Placeholders -->
     <string name="title">Title</string>
