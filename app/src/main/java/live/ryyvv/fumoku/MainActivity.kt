@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.mikepenz.aboutlibraries.LibsBuilder
 import live.ryyvv.fumoku.utils.TAG
@@ -117,14 +118,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUI(user: FirebaseUser?) {
-        val fragment: Fragment = if (user == null) {
-            SignInFragment {
-                signIn()
-            }
+        val signInFragment = SignInFragment { signIn() }
+        val fumoRecyclerFragment = FumoRecyclerFragment(Firebase.database.reference)
+
+        val fragment: Fragment = if (user != null) {
+            fumoRecyclerFragment
         } else {
-            FumoRecyclerFragment {
-                signOut()
-            }
+            signInFragment
         }
 
         supportFragmentManager.commit {
