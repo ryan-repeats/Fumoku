@@ -4,4 +4,7 @@ data class Fumo(
     var name: String?,
     var type: String,
     var story: String,
-)
+) {
+    @Suppress("unused")
+    constructor() : this(null, "", "")
+}

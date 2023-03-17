@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.Query
@@ -20,6 +21,8 @@ class FumoRecyclerFragment(private val query: Query) : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_fumo_recycler, container, false).also {
             val recycler = it as RecyclerView
+
+            recycler.layoutManager = LinearLayoutManager(it.context)
 
             val options = FirebaseRecyclerOptions.Builder<Fumo>()
                 .setQuery(query, Fumo::class.java)

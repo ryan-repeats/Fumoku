@@ -1,5 +1,6 @@
 package live.ryyvv.fumoku
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
@@ -65,6 +67,12 @@ class MainActivity : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         //endregion
+
+        findViewById<FloatingActionButton>(R.id.add).apply {
+            setOnClickListener {
+                startActivity(Intent(this@MainActivity, AddActivity::class.java))
+            }
+        }
 
         auth = Firebase.auth
         database = Firebase.database
