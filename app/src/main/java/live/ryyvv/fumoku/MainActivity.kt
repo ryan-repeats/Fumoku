@@ -16,6 +16,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.Query
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.mikepenz.aboutlibraries.LibsBuilder
@@ -25,6 +27,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var database: FirebaseDatabase
+
+    val fumoQuery: Query
+        get() {
+            return database.reference.child(auth.uid!!).child("fumo")
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +67,7 @@ class MainActivity : AppCompatActivity() {
         //endregion
 
         auth = Firebase.auth
+        database = Firebase.database
     }
 
     override fun onStart() {
@@ -119,7 +128,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser?) {
         val signInFragment = SignInFragment { signIn() }
-        val fumoRecyclerFragment = FumoRecyclerFragment(Firebase.database.reference)
+        val fumoRecyclerFragment = FumoRecyclerFragment(fumoQuery)
 
         val fragment: Fragment = if (user != null) {
             fumoRecyclerFragment

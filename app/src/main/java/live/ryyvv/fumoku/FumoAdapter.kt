@@ -9,10 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
 import live.ryyvv.fumoku.utils.Fumo
 
 class FumoAdapter(options: FirebaseRecyclerOptions<Fumo>) :
@@ -62,9 +58,7 @@ class FumoAdapter(options: FirebaseRecyclerOptions<Fumo>) :
             story.text = model.story
 
             delete.setOnClickListener {
-                CoroutineScope(Dispatchers.IO).launch {
-                    getRef(position).removeValue().await()
-                }
+                getRef(position).removeValue()
             }
         }
     }
